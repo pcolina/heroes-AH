@@ -1,0 +1,1 @@
+sslCAinfo = /bin/curl-ca-bundle.crt

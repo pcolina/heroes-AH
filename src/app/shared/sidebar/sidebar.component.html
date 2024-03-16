@@ -1,0 +1,10 @@
+<mat-sidenav [opened]="isSidebarOpen()" mat-icon-button>
+  <mat-nav-list class="sidebar" (click)="changeIsSidebarOpen()">
+    <a mat-list-item [routerLink]="'heroes'">
+      <span class="menuitem"> {{ heroesList }}</span>
+    </a>
+    <a mat-list-item [routerLink]="'hero'">
+      <span class="menuitem"> {{ newHero }} </span></a
+    >
+  </mat-nav-list>
+</mat-sidenav>

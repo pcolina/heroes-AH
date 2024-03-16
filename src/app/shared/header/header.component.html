@@ -1,0 +1,10 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)="isSidebarOpen = !isSidebarOpen">
+    <mat-icon>menu</mat-icon>
+  </button>
+</mat-toolbar>
+
+<app-sidebar
+  [isSidebarOpen]="isSidebarOpen"
+  (optionSelected)="optionSelected()"
+></app-sidebar>

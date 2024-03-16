@@ -1,0 +1,12 @@
+.sidebar {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  z-index: 1;
+  overflow-y: auto;
+  background-color: var(--bg-color);
+  width: fit-content;
+  height: calc(100% - 60px);
+}
+
+/* Estilos para el contenido */
