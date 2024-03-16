@@ -1,12 +1,4 @@
 {
-  "users": [
-    {
-      "id": 1,
-      "user": "clark@gmail.com",
-      "pass": "clArk123!",
-      "role": "admin"
-    }
-  ],
   "heroes": [
     {
       "id": "dc-batman",
