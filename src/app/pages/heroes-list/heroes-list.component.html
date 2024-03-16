@@ -1,3 +1,38 @@
-<div style="height: 100%; weight: 100%">
-  <p>heroes-list works!</p>
+<div class="flex-container">
+  @for (hero of allHeroes; track allHeroes; let i = $index) {
+
+  <div
+    [@hoverAnimation]="hoverState[i]"
+    (mouseenter)="onMouseEnter(i)"
+    (mouseleave)="onMouseLeave(i)"
+  >
+    <mat-card class="superhero-card" (click)="openHero(hero.id)">
+      <mat-card-header>
+        <div mat-card-avatar>
+          <img
+            [src]="
+              'assets/images/' +
+              hero.publisher.split(' ')[0].toLocaleLowerCase() +
+              '.png'
+            "
+            alt="Imagen del Superhéroe"
+            class="image-publisher-size"
+          />
+        </div>
+        <mat-card-title>{{ hero.superhero }}</mat-card-title>
+        <mat-card-subtitle>{{ hero.alter_ego }}</mat-card-subtitle>
+      </mat-card-header>
+      <img
+        mat-card-image
+        [src]="'assets/images/' + hero.id + '.jpg'"
+        alt="Imagen del Superhéroe"
+        class="image-size"
+      />
+      <mat-card-content>
+        <br />
+        {{ hero.first_appearance }}
+      </mat-card-content>
+    </mat-card>
+  </div>
+  }
 </div>

@@ -1,0 +1,46 @@
+.flex-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 25px;
+}
+
+.example-card {
+  max-width: 400px;
+  margin-bottom: 8px;
+}
+
+.superhero-card {
+  width: 300px; /* Ancho deseado para la tarjeta */
+  margin: 16px; /* Margen entre tarjetas */
+}
+
+.superhero-avatar {
+  background-color: #ccc;
+}
+
+.superhero-avatar,
+mat-card-avatar,
+mat-card-header {
+  border-radius: 50%; /* Para hacer un avatar redondo */
+  width: 64px; /* Tamaño del avatar */
+  height: 64px; /* Tamaño del avatar */
+}
+
+mat-card-image {
+  height: 200px; /* Altura deseada para la imagen */
+  object-fit: cover; /* Para asegurar que la imagen cubra todo el espacio */
+}
+
+.image-size {
+  width: 100%; /* Ancho máximo igual al contenedor */
+  height: auto;
+  margin-top: 20px; /* Altura automática para mantener la proporción de la imagen */
+}
+
+.image-publisher-size {
+  width: 40px; /* Ancho máximo igual al contenedor */
+  height: 40px; /* Altura automática para mantener la proporción de la imagen */
+}

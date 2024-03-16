@@ -9,12 +9,12 @@ const apiUrl = 'http://localhost:3000';
 @Injectable({
   providedIn: 'root'
 })
-export class HeroServiceTsService implements HeroRepository {
+export class HeroServiceService {
 
   constructor(private http: HttpClient) { }
 
   public getHeroes(): Observable<Hero[]> {
-    return this.http.get<Hero[]>(apiUrl);
+    return this.http.get<Hero[]>(apiUrl + '/heroes');
 
   }
 
