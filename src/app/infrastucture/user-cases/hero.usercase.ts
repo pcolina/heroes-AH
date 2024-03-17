@@ -5,7 +5,7 @@ import { Observable, catchError, map, of } from "rxjs";
 import { HeroRepository } from "../../domain/repositories/hero.repository";
 import { Hero } from "../../domain/models/hero";
 import { HeroMapper } from "../mappers/hero.mapper";
-import { HeroServiceService } from "../services/hero.service.ts.service";
+import { HeroServiceService } from "../services/heroservice.service";
 
 @Injectable({
     providedIn: 'root'

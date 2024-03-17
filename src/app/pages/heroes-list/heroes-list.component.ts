@@ -77,9 +77,6 @@ export default class HeroesListComponent {
 
   }
 
-  createHero() {
-    console.log('object');
-  }
   onMouseEnter(idx: number) {
     this.hoverState[idx] = 'hovered';
   }
