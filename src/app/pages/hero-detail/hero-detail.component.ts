@@ -33,6 +33,8 @@ export default class HeroDetailComponent {
   public superheroForm: FormGroup;
   public loading = false;
 
+  public myFile: File = {} as File;
+
   constructor(private heroUseCase: HeroUseCase,
     private route: ActivatedRoute,
     private router: Router,
@@ -45,6 +47,7 @@ export default class HeroDetailComponent {
       firstAppearance: new FormControl('', [Validators.required, Validators.minLength(4)]),
       publisher: new FormControl('', [Validators.required, Validators.minLength(4)]),
       superhero: new FormControl('', [Validators.required, Validators.minLength(4)]),
+      urlImg: new FormControl('', [Validators.required, Validators.minLength(4)]),
 
     });
 
@@ -159,5 +162,12 @@ export default class HeroDetailComponent {
 
   goBack() {
     this.router.navigate(['/heroes']);
+  }
+
+  onFileSelected(event: any) {
+    this.myFile = event.target.files[0];
+
+
+
   }
 }

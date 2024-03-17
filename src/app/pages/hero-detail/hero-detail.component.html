@@ -47,6 +47,21 @@
         </mat-form-field>
       </div>
 
+      <div fxFlex="100%">
+        <div class="file-input-container">
+          <label for="fileInput" class="file-input-label">
+            <span class="file-input-text">Seleccionar archivo</span>
+            <input
+              id="fileInput"
+              class="file-input"
+              type="file"
+              (change)="onFileSelected($event)"
+            />
+          </label>
+        </div>
+        <span class="file-name">Archivo seleccionado: {{ myFile.name }}</span>
+      </div>
+
       <div fxFlex="70%" class="btn-container">
         <button
           mat-flat-button
