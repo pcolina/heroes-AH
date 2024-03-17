@@ -1,1 +1,82 @@
-detalle de un heroe!!
+<app-loader [isLoading]="loading"></app-loader>
+
+<form [formGroup]="superheroForm" class="form">
+  <section>
+    <h1 class="title">
+      {{ tittle }} @if(isEdition){
+      <b>{{ superheroForm.controls["superhero"].value | uppercase }}</b>
+      }
+    </h1>
+  </section>
+  <section class="container">
+    <section fxFlex="70%" class="row-input">
+      <div fxFlex="70%">
+        <mat-form-field class="form-field">
+          <mat-label>Nombre de Superheroe</mat-label>
+          <input matInput formControlName="superhero" />
+        </mat-form-field>
+        <mat-form-field class="form-field">
+          <mat-label>Alter Ego</mat-label>
+          <input matInput formControlName="alterEgo" />
+        </mat-form-field>
+      </div>
+      <div fxFlex="50%">
+        <mat-form-field class="form-field">
+          <mat-label>Personajes</mat-label>
+          <input matInput formControlName="characters" />
+        </mat-form-field>
+        <mat-form-field class="form-field">
+          <mat-label>Primera aparicion</mat-label>
+          <input matInput formControlName="firstAppearance" />
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="50%">
+        <mat-form-field class="form-field">
+          <mat-label>Selecciona un editor</mat-label>
+          <mat-select formControlName="publisher" value="publisher">
+            <mat-option value="DC Comics">DC Comics</mat-option>
+            <mat-option value="Marvel Comic">Marvel Comic</mat-option>
+            <!-- Agrega más opciones según tus necesidades -->
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="form-field">
+          <mat-label>Primera aparicion</mat-label>
+          <input matInput formControlName="firstAppearance" />
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="70%" class="btn-container">
+        <button
+          mat-flat-button
+          color="primary"
+          (click)="saveHeroDetail()"
+          superheroForm
+          [disabled]="!superheroForm.valid || !superheroForm.touched"
+        >
+          @if (isEdition){ Actualizar } @else { Guardar }
+        </button>
+        @if (isEdition){
+        <button
+          mat-flat-button
+          color="primary"
+          (click)="deleteHeroDetail()"
+          superheroForm
+        >
+          Borrar
+        </button>
+        }
+      </div>
+    </section>
+
+    <section fxFlex="50%">
+      <img
+        mat-card-image
+        [src]="'assets/images/' + selectedHero?.id + '.jpg'"
+        alt="Imagen del Superhéroe"
+        class="image-size"
+      />
+    </section>
+  </section>
+</form>

@@ -1,14 +1,18 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { animate, state, style, transition, trigger } from '@angular/animations';
+
 import { HeroUseCase } from '../../infrastucture/user-cases/hero.usercase';
 import { Hero } from '../../domain/models/hero';
 import { MaterialModule } from '../../shared/material/material.module';
-import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Router } from '@angular/router';
+import { TitleCasePipe } from '@angular/common';
+import { LoaderComponent } from '../../shared/loader/loader.component';
 
 @Component({
   selector: 'app-heroes-list',
   standalone: true,
-  imports: [MaterialModule],
+  imports: [MaterialModule, FormsModule, TitleCasePipe, LoaderComponent],
   templateUrl: './heroes-list.component.html',
   styleUrl: './heroes-list.component.scss',
   animations: [
@@ -26,8 +30,11 @@ import { Router } from '@angular/router';
 export default class HeroesListComponent {
 
   public allHeroes: Hero[] | [] = [];
+  public heroesList: Hero[] | [] = [];
   public hoverState = Array(this.allHeroes.length).fill('unhoverd');
 
+  public searchName = '';
+  public loading = true;
 
   constructor(private heroUseCase: HeroUseCase,
     private router: Router) {
@@ -36,19 +43,49 @@ export default class HeroesListComponent {
   }
 
   loadHeroes() {
+    this.loading = true;
     this.heroUseCase.getHeroes().subscribe(heroes => {
       this.allHeroes = heroes;
-    })
+      this.heroesList = heroes;
+
+
+    }, (error) => { },
+      () => {
+        // si no no se ve el loading ;)
+        setTimeout(() => {
+          this.loading = false;
+        }, 2000);
+      });
   }
 
-  openHero(id: string) {
-    this.router.navigate(['/hero']);
+  openHero(id: string | undefined = undefined) {
+    if (!id) {
+      this.router.navigate(['/hero']);
+    } else {
+
+      this.router.navigate(['/hero/', id]);
+    }
   }
 
+  onSearch(event: any) {
+    if (event.key === 'Enter')
+      this.searchHeroes();
+  }
+
+  searchHeroes() {
+    this.heroesList = this.allHeroes.filter(hero => hero.superhero.toLocaleLowerCase().includes(this.searchName.toLocaleLowerCase()))
+
+  }
+
+  createHero() {
+    console.log('object');
+  }
   onMouseEnter(idx: number) {
     this.hoverState[idx] = 'hovered';
   }
   onMouseLeave(idx: number) {
     this.hoverState[idx] = 'unhovered';
   }
+
+
 }

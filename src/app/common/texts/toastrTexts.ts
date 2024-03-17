@@ -1,0 +1,6 @@
+export const HERO_SAVED_OK = "El héroe se ha creado correctamente"
+export const HERO_SAVED_KO = "Se ha producido un fallo al guardar el heroe."
+export const HERO_UPDATE_OK = "El héroe se ha actualizado correctamente"
+export const HERO_UPDATE_KO = "Se ha producido un fallo al actualizar el heroe."
+export const HERO_DELETED_OK = "El héroe se ha eliminado correctamente"
+export const HERO_DELETED_KO = "Se ha producido un fallo al eliminar el heroe."

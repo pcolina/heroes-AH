@@ -10,7 +10,7 @@
     },
     {
       "id": "dc-superman",
-      "superhero": "Superman",
+      "superhero": "superman",
       "publisher": "DC Comics",
       "alter_ego": "Kal-El",
       "first_appearance": "Action Comics #1",
@@ -18,7 +18,7 @@
     },
     {
       "id": "dc-flash",
-      "superhero": "Flash",
+      "superhero": "Flash2",
       "publisher": "DC Comics",
       "alter_ego": "Jay Garrick",
       "first_appearance": "Flash Comics #1",
@@ -26,7 +26,7 @@
     },
     {
       "id": "dc-green",
-      "superhero": "Green Lantern",
+      "superhero": "Green Lantern2",
       "publisher": "DC Comics",
       "alter_ego": "Alan Scott",
       "first_appearance": "All-American Comics #16",

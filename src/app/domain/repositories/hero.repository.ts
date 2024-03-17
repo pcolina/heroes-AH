@@ -7,4 +7,5 @@ export interface HeroRepository {
     getHero(id: string): Observable<Hero | null>;
     addHero(hero: Hero): Observable<boolean>;
     updateHero(hero: Hero): Observable<boolean>;
+    deleteHero(id: string): Observable<boolean>;
 }

@@ -14,25 +14,29 @@ export class HeroServiceService {
   constructor(private http: HttpClient) { }
 
   public getHeroes(): Observable<Hero[]> {
-    return this.http.get<Hero[]>(apiUrl + '/heroes');
+    return this.http.get<Hero[]>(apiUrl.concat('/heroes'));
 
   }
 
   public getHero(id: string): Observable<Hero> {
-    return this.http.get<Hero>(apiUrl);
+    return this.http.get<Hero>(apiUrl.concat(`/heroes/${id}`));
 
   }
 
   public addHero(hero: Hero): Observable<boolean> {
-    return this.http.put<boolean>(apiUrl, hero);
+    return this.http.post<boolean>(apiUrl.concat(`/heroes`), hero);
 
   }
 
   public updateHero(hero: Hero): Observable<boolean> {
-    return this.http.patch<boolean>(apiUrl, hero);
+    return this.http.patch<boolean>(apiUrl.concat(`/heroes/${hero.id}`), hero);
 
   }
 
+  public deleteHero(id: string): Observable<boolean> {
+    return this.http.delete<boolean>(apiUrl.concat(`/heroes/${id}`));
+
+  }
 
 
 }

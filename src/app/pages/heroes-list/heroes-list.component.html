@@ -1,12 +1,39 @@
+<app-loader [isLoading]="loading"></app-loader>
+
 <div class="flex-container">
-  @for (hero of allHeroes; track allHeroes; let i = $index) {
+  <section id="searching" class="input-search-container">
+    <div fxFlex="70%" class="input-search">
+      <mat-form-field class="form-field-large">
+        <mat-label>Busca superheroe por nombre ...</mat-label>
+        <input
+          matInput
+          [(ngModel)]="searchName"
+          (keypress)="onSearch($event)"
+        />
+      </mat-form-field>
+    </div>
+
+    <div fxFlex="20%" class="btn-add">
+      <button
+        mat-flat-button
+        color="primary"
+        (click)="openHero()"
+        class="btn-edit"
+      >
+        Nuevo superheroe
+      </button>
+    </div>
+  </section>
+</div>
+<div class="flex-container">
+  @for (hero of heroesList; track allHeroes; let i = $index) {
 
   <div
     [@hoverAnimation]="hoverState[i]"
     (mouseenter)="onMouseEnter(i)"
     (mouseleave)="onMouseLeave(i)"
   >
-    <mat-card class="superhero-card" (click)="openHero(hero.id)">
+    <mat-card class="superhero-card">
       <mat-card-header>
         <div mat-card-avatar>
           <img
@@ -19,19 +46,29 @@
             class="image-publisher-size"
           />
         </div>
-        <mat-card-title>{{ hero.superhero }}</mat-card-title>
+        <mat-card-title>{{ hero.superhero | titlecase }}</mat-card-title>
         <mat-card-subtitle>{{ hero.alter_ego }}</mat-card-subtitle>
       </mat-card-header>
-      <img
-        mat-card-image
-        [src]="'assets/images/' + hero.id + '.jpg'"
-        alt="Imagen del Superhéroe"
-        class="image-size"
-      />
+      <div class="img-container">
+        <img
+          mat-card-image
+          [src]="'assets/images/' + hero.id + '.jpg'"
+          alt="Imagen del Superhéroe"
+          class="image-size"
+        />
+      </div>
       <mat-card-content>
         <br />
         {{ hero.first_appearance }}
       </mat-card-content>
+      <button
+        mat-flat-button
+        color="primary"
+        (click)="openHero(hero.id)"
+        class="btn-edit"
+      >
+        Editar
+      </button>
     </mat-card>
   </div>
   }

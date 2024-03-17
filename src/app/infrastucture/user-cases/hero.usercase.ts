@@ -48,4 +48,8 @@ export class HeroUseCase implements HeroRepository {
         const newHeroDTO = HeroMapper.fromDomainToApi(hero);
         return this.heroService.updateHero(hero);
     }
+
+    deleteHero(id: string): Observable<boolean> {
+        return this.heroService.deleteHero(id);
+    }
 }

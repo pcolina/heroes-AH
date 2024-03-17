@@ -7,14 +7,32 @@
   margin-top: 25px;
 }
 
+.input-search-container {
+  width: 100%;
+  margin-left: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.input-search {
+  width: 75%;
+}
+
+.form-field-large {
+  width: 40%;
+}
+.form-field {
+  width: 250px;
+}
+
 .example-card {
-  max-width: 400px;
+  max-width: 300px;
   margin-bottom: 8px;
 }
 
 .superhero-card {
-  width: 300px; /* Ancho deseado para la tarjeta */
-  margin: 16px; /* Margen entre tarjetas */
+  width: 250px;
+  margin: 16px;
 }
 
 .superhero-avatar {
@@ -24,23 +42,32 @@
 .superhero-avatar,
 mat-card-avatar,
 mat-card-header {
-  border-radius: 50%; /* Para hacer un avatar redondo */
-  width: 64px; /* Tamaño del avatar */
-  height: 64px; /* Tamaño del avatar */
+  border-radius: 50%;
+  width: 64px;
+  height: 64px;
 }
 
 mat-card-image {
-  height: 200px; /* Altura deseada para la imagen */
-  object-fit: cover; /* Para asegurar que la imagen cubra todo el espacio */
+  height: 200px;
+  object-fit: cover;
 }
 
+.img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .image-size {
-  width: 100%; /* Ancho máximo igual al contenedor */
-  height: auto;
-  margin-top: 20px; /* Altura automática para mantener la proporción de la imagen */
+  width: 70%;
+  height: 70%;
+  margin: 25px;
 }
 
 .image-publisher-size {
-  width: 40px; /* Ancho máximo igual al contenedor */
-  height: 40px; /* Altura automática para mantener la proporción de la imagen */
+  width: 40px;
+  height: 40px;
+}
+
+.btn-edit {
+  margin: 15px;
 }
