@@ -4,7 +4,7 @@
   <section id="searching" class="input-search-container">
     <div fxFlex="70%" class="input-search">
       <mat-form-field class="form-field-large">
-        <mat-label>Busca superheroe por nombre ...</mat-label>
+        <mat-label>{{ superheroSearch }}</mat-label>
         <input
           matInput
           [(ngModel)]="searchName"
@@ -20,7 +20,7 @@
         (click)="openHero()"
         class="btn-edit"
       >
-        Nuevo superheroe
+        {{ newSuperhero }}
       </button>
     </div>
   </section>
@@ -67,7 +67,7 @@
         (click)="openHero(hero.id)"
         class="btn-edit"
       >
-        Editar
+        {{ editBtn }}
       </button>
     </mat-card>
   </div>

@@ -1,32 +1,35 @@
 <app-loader [isLoading]="loading"></app-loader>
 
-<form [formGroup]="superheroForm" class="form">
-  <section>
-    <h1 class="title">
-      {{ tittle }} @if(isEdition){
-      <b>{{ superheroForm.controls["superhero"].value | uppercase }}</b>
-      }
-    </h1>
-  </section>
+<form [formGroup]="superheroForm">
   <section class="container">
-    <section fxFlex="70%" class="row-input">
-      <div fxFlex="70%">
+    <section class="row-input">
+      <div fxFlex="70%" class="tittle-edit">
+        <h1 class="center">
+          {{ tittle }} @if(isEdition){
+          <b class="tittle-edit"
+            >&nbsp;
+            {{ superheroForm.controls["superhero"].value | uppercase }}</b
+          >
+          }
+        </h1>
+      </div>
+      <div fxFlex="70%" class="row-inputs-edit">
         <mat-form-field class="form-field">
-          <mat-label>Nombre de Superheroe</mat-label>
+          <mat-label>{{ superHeroName }}</mat-label>
           <input matInput formControlName="superhero" />
         </mat-form-field>
         <mat-form-field class="form-field">
-          <mat-label>Alter Ego</mat-label>
+          <mat-label>{{ alterEgo }}</mat-label>
           <input matInput formControlName="alterEgo" />
         </mat-form-field>
       </div>
       <div fxFlex="50%">
         <mat-form-field class="form-field">
-          <mat-label>Personajes</mat-label>
+          <mat-label>{{ character }}*</mat-label>
           <input matInput formControlName="characters" />
         </mat-form-field>
         <mat-form-field class="form-field">
-          <mat-label>Primera aparicion</mat-label>
+          <mat-label>{{ firstApparearance }}</mat-label>
           <input matInput formControlName="firstAppearance" />
         </mat-form-field>
       </div>
@@ -50,7 +53,7 @@
       <div fxFlex="100%">
         <div class="file-input-container">
           <label for="fileInput" class="file-input-label">
-            <span class="file-input-text">Seleccionar archivo</span>
+            <span class="file-input-text">{{ selectFile }}</span>
             <input
               id="fileInput"
               class="file-input"
@@ -59,8 +62,17 @@
             />
           </label>
         </div>
-        <span class="file-name">Archivo seleccionado: {{ myFile.name }}</span>
+        <span class="file-name">{{ fileSelected }}{{ myFile.name }}</span>
       </div>
+    </section>
+
+    <section class="row-image">
+      <img
+        mat-card-image
+        [src]="'assets/images/' + selectedHero?.id + '.jpg'"
+        alt="Imagen del Superhéroe"
+        class="image-size"
+      />
 
       <div fxFlex="70%" class="btn-container">
         <button
@@ -70,7 +82,7 @@
           superheroForm
           [disabled]="!superheroForm.valid || !superheroForm.touched"
         >
-          @if (isEdition){ Actualizar } @else { Guardar }
+          @if (isEdition){ {{ updateBtn }} } @else { {{ SaveBtn }} }
         </button>
         @if (isEdition){
         <button
@@ -83,15 +95,6 @@
         </button>
         }
       </div>
-    </section>
-
-    <section fxFlex="50%">
-      <img
-        mat-card-image
-        [src]="'assets/images/' + selectedHero?.id + '.jpg'"
-        alt="Imagen del Superhéroe"
-        class="image-size"
-      />
     </section>
   </section>
 </form>

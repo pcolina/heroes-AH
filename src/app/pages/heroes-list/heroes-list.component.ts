@@ -1,3 +1,4 @@
+import { EDIT, NEW_SUPERHERO, SUPERHERO_SEARCH } from './../../common/texts/webText';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -36,6 +37,10 @@ export default class HeroesListComponent {
   public searchName = '';
   public loading = true;
 
+  public superheroSearch = SUPERHERO_SEARCH;
+  public newSuperhero = NEW_SUPERHERO;
+  public editBtn = EDIT;
+
   constructor(private heroUseCase: HeroUseCase,
     private router: Router) {
 
@@ -47,8 +52,6 @@ export default class HeroesListComponent {
     this.heroUseCase.getHeroes().subscribe(heroes => {
       this.allHeroes = heroes;
       this.heroesList = heroes;
-
-
     }, (error) => { },
       () => {
         // si no no se ve el loading ;)

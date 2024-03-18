@@ -11,6 +11,8 @@ import { ToastrService } from 'ngx-toastr';
 import { HERO_DELETED_OK, HERO_SAVED_KO, HERO_SAVED_OK, HERO_UPDATE_KO, HERO_UPDATE_OK } from '../../common/texts/toastrTexts';
 import { AppComponent } from '../../app.component';
 import { LoaderComponent } from '../../shared/loader/loader.component';
+import { ALTER_EGO, CHARACTERS, DETAIL_NEW_TITLE, DETAIL_UPDATE_TITLE, FILE_SELECTED, FIRST_APPEREANCE, SELECT_A_FILE, SUPER_HERO_NAME } from '../../common/texts/webText';
+import { SAVE, UPDATE } from '../../common/texts/buttonsText';
 
 
 @Component({
@@ -34,6 +36,18 @@ export default class HeroDetailComponent {
   public loading = false;
 
   public myFile: File = {} as File;
+
+  public fileSelected = FILE_SELECTED;
+  public superHeroName = SUPER_HERO_NAME;
+  public alterEgo = ALTER_EGO;
+  public character = CHARACTERS;
+
+  public firstApparearance = FIRST_APPEREANCE;
+  public selectFile = SELECT_A_FILE;
+
+  public updateBtn = UPDATE;
+  public SaveBtn = SAVE;
+
 
   constructor(private heroUseCase: HeroUseCase,
     private route: ActivatedRoute,
@@ -69,7 +83,7 @@ export default class HeroDetailComponent {
   getIdFromPath() {
     let id = 0;
     this.route.params.subscribe(params => {
-      id = params['id']; // Obtener el valor de 'id' de los parámetros de la ruta
+      id = params['id'];
 
     });
     return id;
@@ -83,18 +97,14 @@ export default class HeroDetailComponent {
         this.selectedHero = hero;
         this.fillForm();
       }, 2000);
-
-
-
-
     });
   }
 
   paintTittle() {
-    this.tittle = 'Formulario para dar de alta un nuevo superheroe';
+    this.tittle = DETAIL_NEW_TITLE;
 
     if (this.isEdition) {
-      this.tittle = 'Actualiza los datos de: '
+      this.tittle = DETAIL_UPDATE_TITLE;
     }
   }
 
